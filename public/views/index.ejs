@@ -1,37 +1,35 @@
 <% include public/views/header.ejs %>
 <% include public/views/no_print.ejs %>
 
-<div class="row" id="topMast">
-	<div class="small-6 columns">
-		<h2>NNSP Incident Form - 2019</h2>
-	</div>
-	<div class="small-2 columns"><br>v.2019.01.5</div>
-	<div class="small-2 columns vertical-center"><input type="reset" class="button" id="reset1" value="Start New"></div>
-	<div class="small-2 columns center">
-		<img src="public/images/NSP_Logo.png" alt="NSP Logo" id="nspLogo" width="80" height="100">
-	</div>
-</div>
-<div class="panel radius">
+<div class="grid-container fluid">
+    <div class="grid-x grid-padding-x" id="topMast">
+        <div class="small-6 cell">
+            <h2>NNSP Incident Form - 2019</h2>
+        </div>
+        <div class="small-2 cell"><br><strong>v.2019.01.5</strong></div>
+        <div class="small-2 cell vertical-center"><input type="reset" class="button" id="reset1" value="Start New"></div>
+        <div class="small-2 cell center">
+            <img src="public/images/NSP_Logo.png" alt="NSP Logo" id="nspLogo" width="80" height="100">
+        </div>
+    </div>
 	<form id="mainForm" action="javascript:0">
-		<div class="row">
-			<fieldset id="dateTime">
-            <legend>Date &amp; Time</legend>
-                <div class="row">
-                    <div class="small-4 columns">
-                        <span class="label">Day</span><br>
-                        <input name="day" id="day" type="text" required>
-                    </div>
-                    <div class="small-4 columns">
-                        <span class="label">Date</span><br>
-                        <input name="date" id="date" type="text" required>
-                    </div>
-                    <div class="small-4 columns end">
-                        <span class="label">Incident Time</span><br>
-                        <input name="incidentTime" id="incidentTime" type="time" autofocus required>
-                    </div>
+        <fieldset id="dateTime">
+            <legend><strong>Date &amp; Time</strong></legend>
+            <div class="grid-x grid-padding-x">
+                <div class="small-4 cell">
+                    <span class="label">Day</span><br>
+                    <input name="day" id="day" type="text" required>
                 </div>
-			</fieldset>
-		</div>
+                <div class="small-4 cell">
+                    <span class="label">Date</span><br>
+                    <input name="date" id="date" type="text" required>
+                </div>
+                <div class="small-4 cell">
+                    <span class="label">Incident Time</span><br>
+                    <input name="incidentTime" id="incidentTime" type="time" autofocus required>
+                </div>
+            </div>
+        </fieldset>
 
 
 			<% include public/views/personal_info.ejs %>
@@ -50,20 +48,16 @@
 
 			<% include public/views/witness_completer.ejs %>
 
-			<div class="row">
-				<fieldset id="buttons">
-					<div class="row">
-						<div class="small-3 columns">
-							<input type='submit' id='submit' value='Completed!' class="button large">
-							<!--<span class="button large" id="submit">Completed!</span>-->
-						</div>
-						<div class="small-3 columns float-right">
-							<input type="reset" class="button large alert float-right" id="reset2" value="Reset Form">
-						</div>
-					</div>
-				</fieldset>
-			</div>
+            <fieldset id="buttons">
+                <div class="grid-x grid-padding-x">
+                    <div class="small-10 cell">
+                        <input type='submit' id='submit' value='Completed!' class="button large">
+                    </div>
+                    <div class="small-1 cell align-right">
+                        <input type="reset" class="button large alert" id="reset2" value="Reset Form">
+                    </div>
+                </div>
+            </fieldset>
 	</form>
 </div>
-
 <% include public/views/footer.ejs %>
