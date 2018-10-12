@@ -1,5 +1,5 @@
 {
-  "name": "2018.nnsp.incident.form",
+  "name": "2019.nnsp.incident.form",
   "version": "4.5.0",
   "description": "For generating Ski Patrol incident forms",
   "main": "bin/server",
