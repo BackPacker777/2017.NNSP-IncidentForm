@@ -6,6 +6,7 @@ const DATA_HANDLER = require('./node/DataHandler');
 
 class app {
     constructor() {
+        this.data_handler = new DATA_HANDLER();
         this.ejsData = null;
         this.user = null;
         this.loadServer();
@@ -38,7 +39,13 @@ class app {
             };
 
             if (request.method === 'POST') {
-                if (request.headers['x-requested-with'] === 'XHR0') {
+                if (request.headers['x-requested-with'] === 'XHR00') {
+                    this.data_handler.getRowCount((count) => {
+                        count = count.toString();
+                        response.writeHead(200, {'content-type': 'text/plain'});
+                        response.end(count);
+                    });
+                } else if (request.headers['x-requested-with'] === 'XHR0') {
                     DATA_HANDLER.setBaseData('zip', (zipData) => {
                         zipData = JSON.stringify(zipData);
                         response.writeHead(200, {'content-type': 'application/json'});
@@ -91,6 +98,34 @@ class app {
                     DATA_HANDLER.generateResultsData((fetchedData) => {
                         response.writeHead(200, {'content-type': 'application/json'});
                         response.end(JSON.stringify(fetchedData));
+                    });
+                } else if (request.headers['x-requested-with'] === 'XHR7') {
+                    this.data_handler.getAllData((data) => {
+                        data = JSON.stringify(data);
+                        response.writeHead(200, {'content-type': 'application/json'});
+                        response.end(data);
+                    });
+                } else if (request.headers['x-requested-with'] === 'fetch.0') {
+                    // const PARSER = require('querystring');
+                    let body = '';
+                    request.on('data', chunk => {
+                        body += chunk.toString();
+                    });
+                    request.on('end', () => {
+                        this.data_handler.insertRow(body);
+                        // console.log(PARSER.parse(body));
+                    });
+                } else if (request.headers['x-requested-with'] === 'fetch.1') {
+                    let criteria = '';
+                    request.on('data', (data) => {
+                        criteria += data.toString();
+                    });
+                    request.on('end', () => {
+                        this.data_handler.queryData(criteria, (data) => {
+                            data = JSON.stringify(data);
+                            response.writeHead(200, {'content-type': 'application/json'});
+                            response.end(data);
+                        });
                     });
                 } else {
                     response.writeHead(405, "Method not supported", {'Content-Type': 'text/html'});

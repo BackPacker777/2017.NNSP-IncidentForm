@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "ejs": "latest",
-    "formidable": "latest"
+    "formidable": "latest",
+    "sqlite3": "latest"
   }
 }
