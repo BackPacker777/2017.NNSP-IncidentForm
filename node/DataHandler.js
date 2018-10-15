@@ -3,8 +3,6 @@
 "use strict";
 
 const FS = require('fs');
-const DATASTORE = require('nedb');
-const DB = new DATASTORE({filename: 'data/log_db.json', autoload: true});
 
 class DataHandler {
     constructor() {
