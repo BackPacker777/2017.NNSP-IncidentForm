@@ -293,30 +293,30 @@ export default class EventHandler {
         //https://stackoverflow.com/questions/24162552/stop-input-from-clearing-on-innerhtml-insert
         let labelCount = count + 1;
         let witnessDiv = document.createElement('div');
-        witnessDiv.className = "row";
+        witnessDiv.className = "grid-x grid-padding-x";
         witnessDiv.id = `w${count}`;
         let witness = `
-                    <div class="small-2 columns">
+                    <div class="small-2 cell">
                         <label class="radius secondary label">Witness ${labelCount}</label>
                         <input name="w${count}LastName" id="w${count}LastName" type="text" placeholder="Last Name">
                     </div>
-                    <div class="small-2 columns">
+                    <div class="small-2 cell">
                     <br>
                         <input name="w${count}FirstName" id="w${count}FirstName" type="text" placeholder="First Name">
                     </div>
-                    <div class="small-2 columns">
+                    <div class="small-2 cell">
                     <br>
                         <input name="w${count}HomePhoneNum" id="w${count}HomePhoneNum" type="tel" placeholder="Phone number">
                     </div>
-                    <div class="small-2 columns">
+                    <div class="small-2 cell">
                     <br>
                         <input name="w${count}CellPhoneNum" id="w${count}CellPhoneNum" type="tel" placeholder="Cell number">
                     </div>
-                    <div class="small-3 columns">
+                    <div class="small-3 cell">
                     <br>
                         <input name="w${count}Street" id="w${count}Street" type="text" placeholder="Street number">
                     </div>
-                        <div class="small-1 columns">
+                        <div class="small-1 cell">
                     <br>
                         <input name="w${count}Zip" id="w${count}Zip" type="text" placeholder="Zip" required>
                     </div>
